@@ -8,21 +8,9 @@ const AppointmentForm = ({ doctores }) => {
     fecha: "",
   });
 
-  // const nameRef = useRef(null);
-  // const especialidadRef = useRef(null);
-  // const fechaRef = useRef(null);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Formulario enviado:", paciente);
-
-    // const paciente = {
-    //   name: nameRef.current?.value,
-    //   especialidad: especialidadRef.current?.value,
-    //   fecha: fechaRef.current?.value,
-    // };
-
-    // console.log(paciente);
   };
 
   return (
@@ -43,22 +31,24 @@ const AppointmentForm = ({ doctores }) => {
 
         <div>
           <label htmlFor="especialidad">Especialidad: </label>
-          <select id="especialidad" name="especialidad" required>
-            {doctores.map((doctor, index) => {
-              return (
-                <option
-                  onChange={(e) =>
-                    setPaciente({ ...paciente, especialidad: e.target.value })
-                  }
-                  key={index}
-                  value={paciente.especialidad}
-                >
-                  {doctor.especialidad}
-                </option>
-              );
-            })}
+          <select
+            id="especialidad"
+            name="especialidad"
+            value={paciente.especialidad}
+            onChange={(e) =>
+              setPaciente({ ...paciente, especialidad: e.target.value })
+            }
+            required
+          >
+            <option value="">Selecciona una especialidad</option>
+            {doctores.map((doctor) => (
+              <option key={doctor.id} value={doctor.especialidad}>
+                {doctor.especialidad}
+              </option>
+            ))}
           </select>
         </div>
+
         <div>
           <label htmlFor="fecha">Fecha de la Cita:</label>
           <input
