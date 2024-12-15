@@ -1,0 +1,34 @@
+{
+  "servicios": [
+    {
+      "id": 1,
+      "nombre": "Consulta Cardiológica",
+      "disponible": true,
+      "descripcion": "Evaluación clínica especializada para diagnóstico y manejo de enfermedades cardíacas comunes."
+    },
+    {
+      "id": 2,
+      "nombre": "Emergencias Cardiovasculares",
+      "disponible": true,
+      "descripcion": "Atención urgente para pacientes con afecciones graves como infartos, arritmias y otros problemas cardíacos."
+    },
+    {
+      "id": 3,
+      "nombre": "Pruebas Diagnósticas Cardíacas",
+      "disponible": false,
+      "descripcion": "Realización de pruebas especializadas como electrocardiograma, ecocardiograma y pruebas de esfuerzo."
+    },
+    {
+      "id": 4,
+      "nombre": "Cirugía Cardíaca",
+      "disponible": true,
+      "descripcion": "Intervenciones quirúrgicas para tratar afecciones cardíacas graves como bypass, válvulas artificiales, y trasplante de corazón."
+    },
+    {
+      "id": 5,
+      "nombre": "Rehabilitación Cardiaca",
+      "disponible": true,
+      "descripcion": "Programa de recuperación para pacientes que han sufrido un evento cardiovascular, con ejercicios supervisados y apoyo psicológico."
+    }
+  ]
+}
