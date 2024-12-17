@@ -15,28 +15,28 @@ const App = () => {
     {
       id: 2,
       nombre: "Dr. Luis González",
-      especialidad: "Pediatría",
+      especialidad: "Emergencias Cardiovasculares",
       experiencia: 8,
       disponibilidad: "Martes y Jueves, 10:00 AM - 2:00 PM",
     },
     {
       id: 3,
       nombre: "Dra. María Rodríguez",
-      especialidad: "Neurología",
+      especialidad: "Cirugía Cardíaca",
       experiencia: 15,
       disponibilidad: "Lunes, Miércoles y Viernes, 8:00 AM - 1:00 PM",
     },
     {
       id: 4,
       nombre: "Dr. Jorge Martínez",
-      especialidad: "Ortopedia",
+      especialidad: "Pruebas Diagnósticas Cardíacas",
       experiencia: 20,
       disponibilidad: "Lunes a Viernes, 10:00 AM - 4:00 PM",
     },
     {
       id: 5,
       nombre: "Dra. Carmen López",
-      especialidad: "Ginecología",
+      especialidad: "Rehabilitación Cardiaca",
       experiencia: 10,
       disponibilidad: "Miércoles y Viernes, 9:00 AM - 12:00 PM",
     },
@@ -81,7 +81,7 @@ const App = () => {
   ];
 
   return (
-    <div>
+    <div className="container mx-auto">
       <h1>¡Bienvenidos al Hospital del Corazón!</h1>
       <div>
         {doctores.map((doctor, index) => (
@@ -94,7 +94,7 @@ const App = () => {
           <ServiceList key={index} servicio={servicio} />
         ))}
       </div>
-      <AppointmentForm doctores={doctores}/>
+      <AppointmentForm doctores={doctores} />
     </div>
   );
 };
