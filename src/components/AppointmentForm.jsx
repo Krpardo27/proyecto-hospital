@@ -1,13 +1,16 @@
-/* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import { useContext, useState } from "react";
+import PropTypes from "prop-types";
+import { DoctoresContext } from "../context/DoctoresContext";
 
-const AppointmentForm = ({ doctores }) => {
+const AppointmentForm = () => {
   const [paciente, setPaciente] = useState({
     name: "",
     especialidad: "",
     email: "",
     fecha: "",
   });
+
+  const { doctores } = useContext(DoctoresContext);
 
   const handleChange = (e) => {
     setPaciente({ ...paciente, [e.target.name]: e.target.value });
@@ -66,11 +69,11 @@ const AppointmentForm = ({ doctores }) => {
             <label htmlFor="email">Ingresa tu email:</label>
             <input
               onChange={handleChange}
-              // onChange={(e) => setPaciente({ ...paciente, name: e.target.value })}
               value={paciente.email}
+              id="email"
               type="email"
               name="email"
-              placeholder="Ingresa tu nombre"
+              placeholder="Ingresa tu email"
               className="form-control"
               required
             />
@@ -85,6 +88,7 @@ const AppointmentForm = ({ doctores }) => {
               type="date"
               id="fecha"
               className="form-control"
+              required
             />
           </div>
           <button type="submit" className="btn btn-secondary">
@@ -95,7 +99,5 @@ const AppointmentForm = ({ doctores }) => {
     </>
   );
 };
-
-
 
 export default AppointmentForm;
