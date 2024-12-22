@@ -1,4 +1,4 @@
-import React, { Profiler} from "react";
+
 import DoctorCard from "./components/DoctorCard";
 import ServiceList from "./components/ServiceList";
 import AppointmentForm from "./components/AppointmentForm";
@@ -53,11 +53,7 @@ const App = () => {
       <DoctorCard doctores={doctores} />
       <ServiceList doctores={doctores} />
       <AppointmentForm doctores={doctores} />
-
       <Modal isOpen={isModalOpen} onClose={toggleModal} content={selectedDoctor} />
-      <button className="btn btn-primary" onClick={toggleModal}>
-        Ver detalles del doctor
-      </button>
     </div>
   );
 };
