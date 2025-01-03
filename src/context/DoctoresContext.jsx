@@ -30,9 +30,11 @@ export const DoctoresProvider = ({ children }) => {
   }, []);
   
 
-  const toggleModal = () => {
+  /*
+    const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  */
 
   const handleSpecialtyChange = (especialidad) => {
     setIsLoading(true);
