@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import withDataFetching from "../hocs/withDataFetching";
 
 // Componente que muestra la lista de doctores
-const ServiceList = ({ data, loading, error }) => {
+const ServiceList = ({ data, loading, error, servicios }) => {
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error.message}</div>;
 

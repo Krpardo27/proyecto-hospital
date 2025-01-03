@@ -1,62 +1,66 @@
-import { createContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { createContext, useState, useEffect } from "react";
 
 export const DoctoresContext = createContext();
 
-// Componente para proveer el contexto
 export const DoctoresProvider = ({ children }) => {
   const [doctores, setDoctores] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [especialidades, setEspecialidades] = useState([]);
+  const [especialidadSeleccionada, setEspecialidadSeleccionada] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log("Datos del JSON:", doctores);
-
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const [isLoading, setIsLoading] = useState(true); // Estado para el loader
 
   useEffect(() => {
-    const obtenerDoctores = async () => {
-      try {
-        const url = "./doctores.json";
-        const respuesta = await fetch(url);
-        console.log("Respuesta:", respuesta);
-
-        if (!respuesta.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const resultado = await respuesta.json();
-        console.log("Datos del JSON:", resultado);
-        setDoctores(resultado);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    obtenerDoctores();
+    setIsLoading(true); // Mostrar loader al iniciar la carga
+    fetch("./doctores.json")
+      .then((response) => response.json())
+      .then((data) => {
+        setTimeout(() => {
+          setDoctores(data);
+          const especialidadesUnicas = [
+            ...new Set(data.map((doctor) => doctor.especialidad)),
+          ];
+          setEspecialidades(especialidadesUnicas);
+          setIsLoading(false); // Ocultar loader después de cargar los datos
+        }, 2000); // Simular un retraso de 2 segundos
+      })
+      .catch((error) => {
+        console.error("Error fetching doctores:", error);
+        setIsLoading(false); // Ocultar loader en caso de error
+      });
   }, []);
+  
 
-  const showDoctorDetails = (doctorId) => {
-    const doctor = doctores.find((doc) => doc.id === doctorId);
-    if (doctor) {
-      setSelectedDoctor(doctor);
-      toggleModal();
-    } else {
-      console.error(`Doctor con id ${doctorId} no encontrado`);
-    }
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
+
+  const handleSpecialtyChange = (especialidad) => {
+    setIsLoading(true);
+    setEspecialidadSeleccionada(especialidad);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Simula un retraso de 1 segundo
+  };
+
+  const filteredDoctors = doctores.filter((doctor) =>
+    especialidadSeleccionada
+      ? doctor.especialidad === especialidadSeleccionada
+      : true
+  );
 
   return (
     <DoctoresContext.Provider
       value={{
         doctores,
-        selectedDoctor,
-        showDoctorDetails,
-        isModalOpen,
-        toggleModal,
+        especialidades,
+        handleSpecialtyChange,
+        filteredDoctors,
+        especialidadSeleccionada,
+        isLoading
       }}
     >
       {children}
     </DoctoresContext.Provider>
   );
-};
-
-DoctoresProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };
