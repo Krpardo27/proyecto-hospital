@@ -2,15 +2,14 @@ import { useContext } from "react";
 import Header from "../components/Header";
 import { ServiciosContext } from "../context/ServiciosContext";
 import ServiceListWithData from "../components/ServiceList";
-import '../styles/Home.css';
+import "../styles/Home.css";
 
 const Home = () => {
-
   const { servicios } = useContext(ServiciosContext);
 
   return (
     <div className="container mx-auto">
-        <Header />
+      <Header />
       <div className="info-hospital">
         <div>
           <h1>¡Bienvenidos al Hospital del Corazón!</h1>
@@ -28,8 +27,8 @@ const Home = () => {
           <aside>
             <h2>Servicios Destacados:</h2>
             <ul>
-              {servicios.map((servicio, id) => (
-                <ServiceListWithData key={id} servicio={servicio}/>
+              {servicios.map((servicio, index) => (
+                <ServiceListWithData key={index} data={servicio} />
               ))}
             </ul>
           </aside>

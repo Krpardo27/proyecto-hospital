@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import withDataFetching from "../hocs/withDataFetching";
 
 // Componente que muestra la lista de doctores
-const ServiceList = ({ data, loading, error, servicios }) => {
+const ServiceList = ({ data, loading, error }) => {
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -40,6 +40,6 @@ ServiceList.defaultProps = {
 };
 
 // Usamos el HOC con una URL de ejemplo
-const ServiceListWithData = withDataFetching(ServiceList, "./doctores.json");
+const ServiceListWithData = withDataFetching(ServiceList, "./servicios.json");
 
 export default ServiceListWithData;
