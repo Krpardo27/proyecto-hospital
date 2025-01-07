@@ -1,10 +1,10 @@
 import React from 'react'
-import AppointmentForm from '../components/AppointmentForm'
+import ContactForm from '../components/ContactForm'
 
 const Citas = () => {
   return (
     <div>
-      <AppointmentForm />
+      <ContactForm />
     </div>
   )
 }
