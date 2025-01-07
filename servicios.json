@@ -1,54 +1,62 @@
-{
-  "servicios": [
-    {
-      "id": 1,
-      "disponible": true,
-      "descripcion": "Evaluación clínica especializada para diagnóstico y manejo de enfermedades cardíacas comunes."
-    },
-    {
-      "id": 2,
-      "disponible": true,
-      "descripcion": "Atención urgente para pacientes con afecciones graves como infartos, arritmias y otros problemas cardíacos."
-    },
-    {
-      "id": 3,
-      "disponible": false,
-      "descripcion": "Realización de pruebas de imagen como rayos X, tomografías computarizadas (TC) y resonancias magnéticas (RM)."
-    },
-    {
-      "id": 4,
-      "disponible": true,
-      "descripcion": "Intervenciones quirúrgicas para tratar diversas afecciones médicas, como apendicitis, hernias y otros procedimientos abdominales."
-    },
-    {
-      "id": 5,
-      "disponible": true,
-      "descripcion": "Diagnóstico, tratamiento y seguimiento de pacientes con cáncer, incluyendo quimioterapia y radioterapia."
-    },
-    {
-      "id": 6,
-      "disponible": true,
-      "descripcion": "Atención médica integral para niños y adolescentes, incluyendo prevención, diagnóstico y tratamiento de enfermedades pediátricas."
-    },
-    {
-      "id": 7,
-      "disponible": true,
-      "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema nervioso, como epilepsia, Parkinson, y accidentes cerebrovasculares."
-    },
-    {
-      "id": 8,
-      "disponible": false,
-      "descripcion": "Evaluación y tratamiento de trastornos visuales, como cataratas, glaucoma y cirugías refractivas."
-    },
-    {
-      "id": 9,
-      "disponible": true,
-      "descripcion": "Diagnóstico y tratamiento de trastornos mentales y emocionales, incluidos trastornos de ansiedad, depresión y psicosis."
-    },
-    {
-      "id": 10,
-      "disponible": true,
-      "descripcion": "Tratamiento y cirugía de afecciones musculo-esqueléticas, como fracturas, lesiones articulares y enfermedades degenerativas."
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "servicio": "Cardiología",
+    "disponible": true,
+    "descripcion": "Evaluación clínica especializada para diagnóstico y manejo de enfermedades cardíacas comunes."
+  },
+  {
+    "id": 2,
+    "servicio": "Urgencias",
+    "disponible": true,
+    "descripcion": "Atención urgente para pacientes con afecciones graves como infartos, arritmias y otros problemas cardíacos."
+  },
+  {
+    "id": 3,
+    "servicio": "Radiología",
+    "disponible": false,
+    "descripcion": "Realización de pruebas de imagen como rayos X, tomografías computarizadas (TC) y resonancias magnéticas (RM)."
+  },
+  {
+    "id": 4,
+    "servicio": "Cirugía General",
+    "disponible": true,
+    "descripcion": "Intervenciones quirúrgicas para tratar diversas afecciones médicas, como apendicitis, hernias y otros procedimientos abdominales."
+  },
+  {
+    "id": 5,
+    "servicio": "Oncología",
+    "disponible": true,
+    "descripcion": "Diagnóstico, tratamiento y seguimiento de pacientes con cáncer, incluyendo quimioterapia y radioterapia."
+  },
+  {
+    "id": 6,
+    "servicio": "Pediatría",
+    "disponible": true,
+    "descripcion": "Atención médica integral para niños y adolescentes, incluyendo prevención, diagnóstico y tratamiento de enfermedades pediátricas."
+  },
+  {
+    "id": 7,
+    "servicio": "Neurología",
+    "disponible": true,
+    "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema nervioso, como epilepsia, Parkinson, y accidentes cerebrovasculares."
+  },
+  {
+    "id": 8,
+    "servicio": "Oftalmología",
+    "disponible": false,
+    "descripcion": "Evaluación y tratamiento de trastornos visuales, como cataratas, glaucoma y cirugías refractivas."
+  },
+  {
+    "id": 9,
+    "servicio": "Psiquiatría",
+    "disponible": true,
+    "descripcion": "Diagnóstico y tratamiento de trastornos mentales y emocionales, incluidos trastornos de ansiedad, depresión y psicosis."
+  },
+  {
+    "id": 10,
+    "servicio": "Ortopedia",
+    "disponible": true,
+    "descripcion": "Tratamiento y cirugía de afecciones musculo-esqueléticas, como fracturas, lesiones articulares y enfermedades degenerativas."
+  }
+]

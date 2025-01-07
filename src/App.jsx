@@ -1,6 +1,3 @@
-import DoctorCard from "./components/DoctorCard";
-import ServiceList from "./components/ServiceList";
-import AppointmentForm from "./components/AppointmentForm";
 import { useContext, useState } from "react";
 import { DoctoresContext } from "./context/DoctoresContext";
 import Modal from "./components/Modal";
@@ -15,8 +12,8 @@ const App = () => {
     useContext(DoctoresContext);
 
   return (
-    <div className="container mx-auto">
-      <Header />
+    <div className="container mx-auto mt-4">
+      {/* <Header /> */}
       <nav className="d-flex gap-2">
         <button onClick={() => setView("home")}>Inicio</button>
         <button onClick={() => setView("equipo-medico")}>Equipo Médico</button>
