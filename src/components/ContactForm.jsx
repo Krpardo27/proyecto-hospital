@@ -1,36 +1,55 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { DoctoresContext } from "../context/DoctoresContext";
+import axios from "axios";
+// import './ContactForm.css';
 
 const ContactForm = () => {
-  const [paciente, setPaciente] = useState({
-    name: "",
-    especialidad: "",
-    email: "",
-    fecha: "",
-  });
+  const [paciente, setPaciente] = useState([]);
+  const [body, setBody] = useState('');
 
   const { doctores } = useContext(DoctoresContext);
 
-  const handleChange = (e) => {
-    setPaciente({ ...paciente, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setPaciente({ ...paciente, [e.target.name]: e.target.value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Formulario enviado: ");
-    setPaciente({
-      name: "",
-      especialidad: "",
-      email: "",
-      fecha: "",
-    });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Formulario enviado: ");
+  //   setPaciente({
+  //     name: "",
+  //     especialidad: "",
+  //     email: "",
+  //     fecha: "",
+  //   });
+  // };
+
+  useEffect(() => { 
+    axios.get('http://localhost:5173/agendar-cita')
+    .then((response) => setPaciente(response.data))
+    .catch((error) => console.error("Error fetching citas:", error));
+  }, [])
 
   const inputRef = useRef(null);
 
   const handleFocus = () => {
     inputRef.current.focus();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:5173/agendar-cita", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(paciente),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Cita Agendada: ", data))
+      .catch((error) => console.error("Error al agendar cita:", error));
   };
 
   return (
@@ -41,8 +60,7 @@ const ContactForm = () => {
           <div className="mb-3">
             <label htmlFor="nombre">Nombre del Paciente:</label>
             <input
-              onChange={handleChange}
-              // onChange={(e) => setPaciente({ ...paciente, name: e.target.value })}
+              onChange={(e) => setPaciente(e.target.value)}
               value={paciente.name}
               type="text"
               name="name"
@@ -59,8 +77,7 @@ const ContactForm = () => {
             <select
               id="especialidad"
               name="especialidad"
-              value={paciente.especialidad}
-              onChange={handleChange}
+              onChange={(e) => setPaciente(e.target.value)}
               className="form-control"
               required
             >
@@ -76,7 +93,7 @@ const ContactForm = () => {
           <div className="mb-3">
             <label htmlFor="email">Ingresa tu email:</label>
             <input
-              onChange={handleChange}
+              onChange={(e) => setPaciente(e.target.value)}
               value={paciente.email}
               id="email"
               type="email"
@@ -90,13 +107,12 @@ const ContactForm = () => {
           <div className="mb-3">
             <label htmlFor="fecha">Fecha de la Cita:</label>
             <input
-              onChange={handleChange}
+              onChange={(e) => setPaciente(e.target.value)}
               value={paciente.fecha}
               name="fecha"
               type="date"
               id="fecha"
               className="form-control"
-              required
             />
           </div>
           <button type="submit" className="btn btn-secondary">

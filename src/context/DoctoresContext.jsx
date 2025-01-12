@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import axios from "axios";
 
 export const DoctoresContext = createContext();
@@ -8,12 +8,12 @@ export const DoctoresProvider = ({ children }) => {
   const [doctores, setDoctores] = useState([]);
   const [especialidades, setEspecialidades] = useState([]);
   const [especialidadSeleccionada, setEspecialidadSeleccionada] = useState("");
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get('./doctores.json')
+    axios
+      .get("./doctores.json")
       .then((response) => {
         setTimeout(() => {
           setDoctores(response.data);
@@ -21,40 +21,20 @@ export const DoctoresProvider = ({ children }) => {
             ...new Set(response.data.map((doctor) => doctor.especialidad)),
           ];
           setEspecialidades(especialidadesUnicas);
-          setIsLoading(false); // Ocultar loader después de cargar los datos
-        }, 2000); // Simular un retraso de 2 segundos
+          setIsLoading(false);
+        }, 2000);
       })
       .catch((error) => {
         console.error("Error fetching doctores:", error);
-        setIsLoading(false); // Ocultar loader en caso de error
+        setIsLoading(false);
       });
   }, []);
 
-  // useEffect(() => {
-  //   setIsLoading(true); 
-  //   fetch("./doctores.json")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setTimeout(() => {
-  //         setDoctores(data);
-  //         const especialidadesUnicas = [
-  //           ...new Set(data.map((doctor) => doctor.especialidad)),
-  //         ];
-  //         setEspecialidades(especialidadesUnicas);
-  //         setIsLoading(false); // Ocultar loader después de cargar los datos
-  //       }, 2000); // Simular un retraso de 2 segundos
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching doctores:", error);
-  //       setIsLoading(false); // Ocultar loader en caso de error
-  //     });
-  // }, []);
-  
-
-  /*
-    const toggleModal = () => {
-  };
-  */
+  useEffect(() => {
+    fetch("http://localhost:5000/doctores")
+      .then((response) => response.json())
+      .then((data) => setDoctores(data));
+  }, []);
 
   const handleSpecialtyChange = (especialidad) => {
     setIsLoading(true);
@@ -62,7 +42,7 @@ export const DoctoresProvider = ({ children }) => {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000); // Simula un retraso de 1 segundo
+    }, 1000);
   };
 
   const filteredDoctors = doctores.filter((doctor) =>
@@ -70,6 +50,30 @@ export const DoctoresProvider = ({ children }) => {
       ? doctor.especialidad === especialidadSeleccionada
       : true
   );
+
+  const addDoctor = (newDoctor) => {
+    // Verificar si el ID del doctor ya existe
+    const doctorExists = doctores.find(
+      (doctor) => doctor.id === newDoctor.id || doctor.email === newDoctor.email
+    );
+    if (doctorExists) {
+      console.warn(`Doctor with ID ${newDoctor.id} already exists.`);
+      return;
+    }
+
+    // Hacer la solicitud POST a json-server
+    fetch("http://localhost:5000/doctores", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newDoctor),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDoctores((prevDoctores) => [data, ...prevDoctores]);
+      });
+  };
 
   return (
     <DoctoresContext.Provider
@@ -79,7 +83,8 @@ export const DoctoresProvider = ({ children }) => {
         handleSpecialtyChange,
         filteredDoctors,
         especialidadSeleccionada,
-        isLoading
+        isLoading,
+        addDoctor,
       }}
     >
       {children}
@@ -90,4 +95,3 @@ export const DoctoresProvider = ({ children }) => {
 DoctoresProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
