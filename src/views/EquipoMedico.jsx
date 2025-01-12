@@ -5,7 +5,7 @@ const EquipoMedico = () => {
   return (
     <React.Fragment>
       <div className="container mx-auto">
-        <h2>Nuestro Equipo Médico</h2>
+        <h2 className="text-3xl">Nuestro Equipo Médico</h2>
         <DoctorCard />
       </div>
     </React.Fragment>

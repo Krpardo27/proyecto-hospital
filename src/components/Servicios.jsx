@@ -12,14 +12,10 @@ const Servicios = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        {servicios.map((service, id) => (
-          <div className="col-md-4 g-2" key={id}>
-            <ServiciosList service={service} />
-          </div>
-        ))}
-      </div>
+    <div className="grid md:grid-cols-4 gap-5">
+      {servicios.map((service, id) => (
+        <ServiciosList key={id} service={service} />
+      ))}
     </div>
   );
 };
