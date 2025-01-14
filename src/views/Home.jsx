@@ -1,5 +1,4 @@
 import DoctorsList from "../components/DoctorsList";
-import GetPostDoctores from "../components/GetPostDoctores";
 import Header from "../components/Header";
 import Servicios from "../components/Servicios";
 
