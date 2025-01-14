@@ -14,9 +14,9 @@ const App = () => {
     <div className="container mx-auto max-w-7xl">
       {/* <Header /> */}
       <nav className="flex gap-5 p-5">
-        <button onClick={() => setView("home")} className="px-5 py-2 bg-blue-400 text-white uppercase">Inicio</button>
-        <button onClick={() => setView("equipo-medico")} className="px-5 py-2 bg-blue-400 text-white uppercase">Equipo Médico</button>
-        <button onClick={() => setView("agendar-cita")} className="px-5 py-2 bg-blue-400 text-white uppercase">Agendar Citas</button>
+        <button onClick={() => setView("home")} className="px-5 py-2 text-white uppercase bg-blue-400">Inicio</button>
+        <button onClick={() => setView("equipo-medico")} className="px-5 py-2 text-white uppercase bg-blue-400">Equipo Médico</button>
+        <button onClick={() => setView("agendar-cita")} className="px-5 py-2 text-white uppercase bg-blue-400">Agendar Citas</button>
       </nav>
       {view === "home" && <Home />}
       {view === "equipo-medico" && <EquipoMedico />}

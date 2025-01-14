@@ -10,31 +10,52 @@ export const DoctoresProvider = ({ children }) => {
   const [especialidadSeleccionada, setEspecialidadSeleccionada] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const [obtenerDoctoresDB, setObtenerDoctoresDB] = useState([]);
+
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("./doctores.json")
+      .get("/doctores.json")
       .then((response) => {
-        setTimeout(() => {
-          setDoctores(response.data);
-          const especialidadesUnicas = [
-            ...new Set(response.data.map((doctor) => doctor.especialidad)),
-          ];
-          setEspecialidades(especialidadesUnicas);
-          setIsLoading(false);
-        }, 2000);
+        const doctoresData = Array.isArray(response.data) ? response.data : [];
+        setDoctores(doctoresData);
+        localStorage.setItem("doctores", JSON.stringify(doctoresData));
+        const especialidadesUnicas = [
+          ...new Set(doctoresData.map((doctor) => doctor.especialidad)),
+        ];
+        setEspecialidades(especialidadesUnicas);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching doctores:", error);
         setIsLoading(false);
       });
   }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   axios
+  //     .get("http://localhost:5000/doctores")
+  //     .then((response) => {
+  //       const doctoresData = Array.isArray(response.data) ? response.data : [];
+  //       setDoctores(doctoresData);
+  //       localStorage.setItem("doctores", JSON.stringify(doctoresData));
+  //       const especialidadesUnicas = [
+  //         ...new Set(doctoresData.map((doctor) => doctor.especialidad)),
+  //       ];
+  //       setEspecialidades(especialidadesUnicas);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching doctores:", error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/doctores")
-      .then((response) => response.json())
-      .then((data) => setDoctores(data));
-  }, []);
+   const filteredDoctors = doctores.filter((doctor) =>
+    especialidadSeleccionada
+      ? doctor.especialidad === especialidadSeleccionada
+      : true
+  );
 
   const handleSpecialtyChange = (especialidad) => {
     setIsLoading(true);
@@ -45,46 +66,65 @@ export const DoctoresProvider = ({ children }) => {
     }, 1000);
   };
 
-  const filteredDoctors = doctores.filter((doctor) =>
-    especialidadSeleccionada
-      ? doctor.especialidad === especialidadSeleccionada
-      : true
-  );
-
-  const addDoctor = (newDoctor) => {
-    // Verificar si el ID del doctor ya existe
-    const doctorExists = doctores.find(
-      (doctor) => doctor.id === newDoctor.id || doctor.email === newDoctor.email
-    );
-    if (doctorExists) {
-      console.warn(`Doctor with ID ${newDoctor.id} already exists.`);
-      return;
-    }
-
-    // Hacer la solicitud POST a json-server
+  const getDoctores = () => {
     fetch("http://localhost:5000/doctores", {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newDoctor),
     })
       .then((response) => response.json())
       .then((data) => {
-        setDoctores((prevDoctores) => [data, ...prevDoctores]);
-      });
+        const doctoresData = Array.isArray(data) ? data : [];
+        setObtenerDoctoresDB(doctoresData);
+        localStorage.setItem("doctores", JSON.stringify(doctoresData));
+      })
+      .catch((error) => console.error("Error:", error));
   };
+
+
+
+
+  // const addDoctor = (newDoctor) => {
+  //   // Verificar si el ID del doctor ya existe
+  //   const doctorExists = doctores.find(
+  //     (doctor) => doctor.id === newDoctor.id || doctor.email === newDoctor.email
+  //   );
+  //   if (doctorExists) {
+  //     console.warn(`Doctor with ID ${newDoctor.id} already exists.`);
+  //     return;
+  //   }
+
+  //   // Hacer la solicitud POST a json-server
+  //   fetch("http://localhost:5000/doctores", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newDoctor),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setDoctores((prevDoctores) => {
+  //         const updatedDoctores = [data, ...prevDoctores];
+  //         localStorage.setItem("doctores", JSON.stringify(updatedDoctores));
+  //         return updatedDoctores;
+  //       });
+  //     })
+  //     .catch((error) => console.error("Error:", error));
+  // };
 
   return (
     <DoctoresContext.Provider
       value={{
         doctores,
         especialidades,
-        handleSpecialtyChange,
-        filteredDoctors,
         especialidadSeleccionada,
         isLoading,
-        addDoctor,
+        handleSpecialtyChange,
+        filteredDoctors,
+        getDoctores,
+        obtenerDoctoresDB
       }}
     >
       {children}

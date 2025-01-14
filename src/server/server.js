@@ -16,19 +16,19 @@ app.get("/api/doctores", (req, res) => {
 });
 
 // Ruta POST para agregar un nuevo doctor
-app.post("/api/doctores", (req, res) => {
-  const { id, nombre, especialidad, email } = req.body;
-  if (!id || !nombre || !especialidad || !email) {
-    return res
-      .status(400)
-      .json({ error: "Todos los campos son obligatorios." });
-  }
+// app.post("/api/db.json", (req, res) => {
+//   const { id, nombre, especialidad, email } = req.body;
+//   if (!id || !nombre || !especialidad || !email) {
+//     return res
+//       .status(400)
+//       .json({ error: "Todos los campos son obligatorios." });
+//   }
 
-  const newDoctor = { id: doctores.length + 15, nombre, especialidad, email };
-  doctores.push(newDoctor);
+//   const newDoctor = { id: doctores.length + 15, nombre, especialidad, email };
+//   doctores.push(newDoctor);
 
-  res.status(201).json(newDoctor);
-});
+//   res.status(201).json(newDoctor);
+// });
 
 // Iniciar el servidor
 const PORT = 5000;

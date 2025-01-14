@@ -1,5 +1,5 @@
-import DoctorForm from "../components/DoctorForm";
 import DoctorsList from "../components/DoctorsList";
+import GetPostDoctores from "../components/GetPostDoctores";
 import Header from "../components/Header";
 import Servicios from "../components/Servicios";
 
@@ -29,10 +29,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex lg:flex-row flex-col gap-5 p-5">
-        <DoctorForm />
+      <div className="flex flex-col w-full gap-5 p-5 lg:flex-row">
+        {/* <DoctorForm /> */}
         <DoctorsList />
       </div>
+      
     </>
   );
 };
