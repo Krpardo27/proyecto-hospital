@@ -1,22 +1,40 @@
 {
   "doctores": [
     {
-      "id": 15,
-      "nombre": "asdsa",
-      "especialidad": "dasd",
-      "email": "asdas@gmail.com"
+      "id": "1",
+      "nombre": "Dr. Juan Pérez",
+      "especialidad": "Cardiología",
+      "email": "juan.perez@gmail.com"
     },
     {
-      "id": 15,
-      "nombre": "ds",
-      "especialidad": "das",
-      "email": "adsdas@gmail.com"
+      "id": "2",
+      "nombre": "Dra. María López",
+      "especialidad": "Dermatología",
+      "email": "maria.lopez@gmail.com"
     },
     {
-      "id": 15,
-      "nombre": "dsa",
-      "especialidad": "das",
-      "email": "das@gmail.com"
+      "id": "3",
+      "nombre": "Dr. Carlos García",
+      "especialidad": "Neurología",
+      "email": "carlos.garcia@gmail.com"
+    },
+    {
+      "id": "4",
+      "nombre": "Dra. Ana Martínez",
+      "especialidad": "Pediatría",
+      "email": "ana.martinez@gmail.com"
+    },
+    {
+      "id": "5",
+      "nombre": "Dr. Luis Rodríguez",
+      "especialidad": "Ginecología",
+      "email": "luis.rodriguez@gmail.com"
+    },
+    {
+      "id": "6",
+      "nombre": "Dra. Laura Fernández",
+      "especialidad": "Oftalmología",
+      "email": "laura.fernandez@gmail.com"
     }
   ]
 }
