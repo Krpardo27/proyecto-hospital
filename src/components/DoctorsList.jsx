@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { DoctoresContext } from "../context/DoctoresContext";
+import Modal from "./Modal";
 
 const DoctorsList = () => {
   const { obtenerDoctoresDB, getDoctores } = useContext(DoctoresContext);
@@ -12,8 +13,8 @@ const DoctorsList = () => {
   return (
     <>
       <div className="hidden w-full lg:flex lg:flex-col">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div className="overflow-x-auto">
+          <div className="inline-block min-w-full py-2 align-middle ">
             <h2 className="mb-4 text-2xl font-bold">Lista de Doctores</h2>
             <div className="min-w-full divide-y divide-gray-200 h-[300px] overflow-y-scroll">
               <table className="w-full bg-white border ">
