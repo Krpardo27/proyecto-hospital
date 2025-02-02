@@ -1,0 +1,8 @@
+{
+  "secure-data": [
+    { "id": 1, "info": "Datos Confidenciales 1" },
+    { "id": 2, "info": "Datos Confidenciales 2" },
+    { "id": 3, "info": "Datos Confidenciales 3" },
+    { "id": 4, "info": "Datos Confidenciales 4" }
+  ]
+}

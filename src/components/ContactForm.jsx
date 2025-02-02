@@ -6,7 +6,7 @@ import axios from "axios";
 
 const ContactForm = () => {
   const [paciente, setPaciente] = useState([]);
-  const [body, setBody] = useState('');
+  const [body, setBody] = useState("");
 
   const { doctores } = useContext(DoctoresContext);
 
@@ -25,11 +25,12 @@ const ContactForm = () => {
   //   });
   // };
 
-  useEffect(() => { 
-    axios.get('http://localhost:5173/agendar-cita')
-    .then((response) => setPaciente(response.data))
-    .catch((error) => console.error("Error fetching citas:", error));
-  }, [])
+  useEffect(() => {
+    axios
+      .get("http://localhost:5173/agendar-cita")
+      .then((response) => setPaciente(response.data))
+      .catch((error) => console.error("Error fetching citas:", error));
+  }, []);
 
   const inputRef = useRef(null);
 
@@ -53,32 +54,49 @@ const ContactForm = () => {
   };
 
   return (
-    <>
-      <div className="container mx-auto">
-        <h1>Formulario de citas</h1>
-        <form onSubmit={handleSubmit} className="contact-form">
-          <div className="mb-3">
-            <label htmlFor="nombre">Nombre del Paciente:</label>
+    <div className="flex items-center justify-center min-h-screen w-full ">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+        <h1 className="mb-6 text-2xl font-bold text-indigo-600">
+          Formulario de citas
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="mb-4">
+            <label
+              htmlFor="nombre"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Nombre del Paciente:
+            </label>
             <input
               onChange={(e) => setPaciente(e.target.value)}
               value={paciente.name}
               type="text"
               name="name"
               placeholder="Ingresa tu nombre"
-              className="form-control"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
               ref={inputRef}
             />
-            <button onClick={handleFocus}>Enfocar</button>
+            <button
+              onClick={handleFocus}
+              className="mt-2 text-indigo-600 hover:text-indigo-900"
+            >
+              Enfocar
+            </button>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="especialidad">Especialidad: </label>
+          <div className="mb-4">
+            <label
+              htmlFor="especialidad"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Especialidad:{" "}
+            </label>
             <select
               id="especialidad"
               name="especialidad"
               onChange={(e) => setPaciente(e.target.value)}
-              className="form-control"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             >
               <option value="">Selecciona una especialidad</option>
@@ -90,37 +108,19 @@ const ContactForm = () => {
             </select>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="email">Ingresa tu email:</label>
-            <input
-              onChange={(e) => setPaciente(e.target.value)}
-              value={paciente.email}
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Ingresa tu email"
-              className="form-control"
-              required
-            />
-          </div>
+          {/* Añadir más campos según sea necesario */}
 
-          <div className="mb-3">
-            <label htmlFor="fecha">Fecha de la Cita:</label>
-            <input
-              onChange={(e) => setPaciente(e.target.value)}
-              value={paciente.fecha}
-              name="fecha"
-              type="date"
-              id="fecha"
-              className="form-control"
-            />
+          <div className="mt-6">
+            <button
+              type="submit"
+              className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Agendar Cita
+            </button>
           </div>
-          <button type="submit" className="btn btn-secondary">
-            Agendar Cita
-          </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

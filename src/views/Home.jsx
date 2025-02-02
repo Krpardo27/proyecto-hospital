@@ -1,5 +1,5 @@
+import { useNavigate } from "react-router-dom";
 import DoctorsList from "../components/DoctorsList";
-import Header from "../components/Header";
 import Servicios from "../components/Servicios";
 
 
@@ -7,8 +7,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
-      <div className="flex ">
+      <div className="container">
         <div className="flex-1 p-5">
           <h2 className="text-3xl">En nuestro Hospital</h2>
           <p>

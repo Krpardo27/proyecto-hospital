@@ -1,6 +1,28 @@
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
+const styles = {
+  modalBackdrop: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: "20px",
+    borderRadius: "8px",
+    maxWidth: "400px",
+    width: "100%",
+  },
+};
+
 // Modal componente
 const Modal = ({ isOpen, onClose, content }) => {
   if (!content) return null;
@@ -31,27 +53,7 @@ const Modal = ({ isOpen, onClose, content }) => {
   );
 };
 
-const styles = {
-  modalBackdrop: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    zIndex: 1000,
-  },
-  modalContent: {
-    backgroundColor: "white",
-    padding: "20px",
-    borderRadius: "8px",
-    maxWidth: "400px",
-    width: "100%",
-  },
-};
+
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
