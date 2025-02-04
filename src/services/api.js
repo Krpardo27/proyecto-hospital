@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5175";
+const API_URL = "http://localhost:5173";
 
 export const getSecureData = async (token) => {
   console.log(token);

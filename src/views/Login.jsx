@@ -1,34 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import useLogin from "../hooks/useLogin";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(false);
-
-    setTimeout(() => {
-      if (username === "admin" && password === "password") {
-        login("admin");
-        navigate("/admin-panel");
-      } else if (username === "doctor" && password === "password") {
-        login("user");
-        navigate("/doctor-panel");
-      } else {
-        alert("Credenciales incorrectas");
-      }
-      setLoading(false);
-    }, 2000);
-  };
+  
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    loading,
+    error,
+    handleLogin,
+  } = useLogin();
 
   return (
     <div className="flex items-center justify-center min-h-screen">
