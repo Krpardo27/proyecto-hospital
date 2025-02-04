@@ -6,6 +6,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
   console.log(user);
@@ -19,15 +20,17 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (role) => {
-    const userData = { role };
+  const login = (role, token, isAdmin) => {
+    const userData = { role, token, admin: isAdmin };
     setUser(userData);
-    const encryptUser = encryptData(userData);
-    localStorage.setItem("user", encryptUser);
+    setAdmin(isAdmin);
+    const encryptedUser = encryptData(userData);
+    localStorage.setItem("user", encryptedUser);
   };
 
   const logout = () => {
     setUser(null);
+    setAdmin(false);
     localStorage.removeItem("user");
   };
 
@@ -35,6 +38,7 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    admin,
     isAuthenticated: !!user,
   };
 

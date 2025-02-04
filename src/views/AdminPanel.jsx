@@ -43,7 +43,6 @@ const AdminPanel = () => {
           </ul>
         </>
       )}
-      {user?.role === "user" && <PanelDoctor />}
     </div>
   );
 };
