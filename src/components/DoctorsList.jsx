@@ -1,22 +1,22 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DoctoresContext } from "../context/DoctoresContext";
 import Modal from "./Modal";
 
 const DoctorsList = () => {
-  const { obtenerDoctoresDB, getDoctores } = useContext(DoctoresContext);
+  const { obtenerDoctoresDB, getDoctores, deleteDoctor, setDoctorToEdit } =
+    useContext(DoctoresContext);
 
-  useEffect(() => {
+    useEffect(() => {
     getDoctores();
-  }, [getDoctores]);
+  }, []);
 
   return (
     <>
       <div className="hidden w-full lg:flex lg:flex-col">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full py-2 align-middle ">
-            <h2 className="mb-4 text-2xl font-bold">Lista de Doctores</h2>
-            <div className="min-w-full divide-y divide-gray-200 h-[300px] overflow-y-scroll">
+            <div className="min-w-full divide-y divide-gray-200 h-[400px] overflow-y-scroll">
               <table className="w-full bg-white border ">
                 <thead className="bg-gray-50">
                   <tr className="">
@@ -42,6 +42,22 @@ const DoctorsList = () => {
                       </td>
                       <td className="py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none">
                         {doctor.email}
+                      </td>
+                      <td className="py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none">
+                        <div className="flex gap-5">
+                          <button
+                            onClick={() => setDoctorToEdit(doctor)}
+                            className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          >
+                            Editar
+                          </button>
+                          <button
+                            onClick={() => deleteDoctor(doctor.id)}
+                            className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                          >
+                            Eliminar
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

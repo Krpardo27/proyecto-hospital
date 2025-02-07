@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { getSecureData } from "../services/api";
-import PanelDoctor from "./PanelDoctor";
+import DoctorsList from "../components/DoctorsList";
+import DoctorForm from "../components/DoctorForm";
 
 const AdminPanel = () => {
   const { user } = useAuth();
@@ -36,11 +37,15 @@ const AdminPanel = () => {
       {user?.role === "admin" && (
         <>
           <p>Bienvenido, Administrador. Aquí están los datos protegidos:</p>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <ul>
-            {Array.isArray(secureData) &&
-              secureData.map((item) => <li key={item.id}>{item.info}</li>)}
-          </ul>
+          <h2 className="mb-4 text-2xl font-bold mt-5">Lista de Doctores</h2>
+          <div className="flex lg:flex-row flex-col w-full gap-5 justify-between">
+            <div className="w-1/3">
+              <DoctorForm />
+            </div>
+            <div className="w-2/3">
+              <DoctorsList />
+            </div>
+          </div>
         </>
       )}
     </div>

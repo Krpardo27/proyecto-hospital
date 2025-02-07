@@ -32,23 +32,37 @@ app.get("/api/doctores", (req, res) => {
   res.json(doctores);
 });
 
-// Ruta POST para agregar un nuevo doctor
-// app.post("/api/db.json", (req, res) => {
-//   const { id, nombre, especialidad, email } = req.body;
-//   if (!id || !nombre || !especialidad || !email) {
-//     return res
-//       .status(400)
-//       .json({ error: "Todos los campos son obligatorios." });
-//   }
+app.post("/api/doctores", (req, res) => {
+  const { id, nombre, especialidad, email } = req.body;
+  if (!id || !nombre || !especialidad || !email) {
+    return res.status(400).json({ error: "Todos los campos son obligatorios." });
+  }
+  const newDoctor = { id, nombre, especialidad, email };
+  doctores.push(newDoctor);
+  res.status(201).json(newDoctor);
+});
 
-//   const newDoctor = { id: doctores.length + 15, nombre, especialidad, email };
-//   doctores.push(newDoctor);
+// Ruta PUT para actualizar un doctor existente
+app.put('/api/doctores/:id', (req, res) => {
+  const id = req.params.id;
+  const doctorIndex = doctores.findIndex((doc) => doc.id === id);
 
-//   res.status(201).json(newDoctor);
-// });
+  if (doctorIndex === -1) {
+    return res.status(404).send('Doctor no encontrado');
+  }
+
+  doctores[doctorIndex] = { ...doctores[doctorIndex], ...req.body };
+  res.json(doctores[doctorIndex]);
+});
+
+app.delete("/api/doctores/:id", (req, res) => {
+  const { id } = req.params;
+  doctores = doctores.filter(doc => doc.id !== parseInt(id));
+  res.status(204).send();
+});
 
 // Iniciar el servidor
 const PORT = 5000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

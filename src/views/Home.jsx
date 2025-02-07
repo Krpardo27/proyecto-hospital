@@ -29,7 +29,6 @@ const Home = () => {
 
       <div className="flex flex-col w-full gap-5 p-5 lg:flex-row">
         {/* <DoctorForm /> */}
-        <DoctorsList />
       </div>
       
     </>
