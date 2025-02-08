@@ -1,12 +1,6 @@
 {
   "doctores": [
     {
-      "nombre": "Dr. Juan Pérez  ddd",
-      "especialidad": "Cardiología ddd",
-      "email": "juan.perez@gmail.com",
-      "id": "1"
-    },
-    {
       "id": "2",
       "nombre": "Dra. María López",
       "especialidad": "Dermatología",
@@ -25,10 +19,10 @@
       "email": "ana.martinez@gmail.com"
     },
     {
-      "id": "cd53",
-      "nombre": "PRUEBA",
+      "nombre": "PRUEBA SANITIZADO",
       "especialidad": "PRUEBA",
-      "email": "prueba@gmail.com"
+      "email": "prueba@gmail.com",
+      "id": "176c"
     }
   ]
 }
