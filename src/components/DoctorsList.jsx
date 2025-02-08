@@ -7,7 +7,7 @@ const DoctorsList = () => {
   const { obtenerDoctoresDB, getDoctores, deleteDoctor, setDoctorToEdit } =
     useContext(DoctoresContext);
 
-    useEffect(() => {
+  useEffect(() => {
     getDoctores();
   }, []);
 
@@ -15,35 +15,38 @@ const DoctorsList = () => {
     <>
       <div className="hidden w-full lg:flex lg:flex-col">
         <div className="overflow-x-auto">
-          <div className="inline-block min-w-full py-2 align-middle ">
-            <div className="min-w-full divide-y divide-gray-200 h-[400px] overflow-y-scroll">
-              <table className="w-full bg-white border ">
-                <thead className="bg-gray-50">
+          <div className="inline-block min-w-full py-2 align-middle">
+            <div className="min-w-full divide-y divide-gray-200 h-full overflow-y-scroll">
+              <table className="w-full border divide-y divide-gray-200">
+                <thead className="bg-gray-300 ">
                   <tr className="">
-                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-widerpx-3 bg-gray-50">
+                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-wider">
                       Nombre
                     </th>
-                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-widerpx-3 bg-gray-50">
+                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-wider">
                       Especialidad
                     </th>
-                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-widerpx-3 bg-gray-50">
+                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-wider">
                       Email
+                    </th>
+                    <th className="sticky top-0 px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase tracking-wider">
+                      Acciones
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className=" divide-y divide-gray-200">
                   {obtenerDoctoresDB.map((doctor, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
-                      <td className="w-full py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none">
+                    <tr key={index} className="hover:bg-gray-50 group">
+                      <td className="w-full py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none  group-hover:bg-gray-200">
                         {doctor.nombre}
                       </td>
-                      <td className="py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none">
+                      <td className="w-full py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none  group-hover:bg-gray-200">
                         {doctor.especialidad}
                       </td>
-                      <td className="py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none">
+                      <td className="w-full py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none  group-hover:bg-gray-200">
                         {doctor.email}
                       </td>
-                      <td className="py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none">
+                      <td className="w-full py-4 pr-3 text-sm font-medium max-w-0 whitespace-nowrap text-wgra-300 sm:w-auto sm:pl-6 sm:max-w-none  group-hover:bg-gray-200">
                         <div className="flex gap-5">
                           <button
                             onClick={() => setDoctorToEdit(doctor)}
@@ -74,7 +77,7 @@ const DoctorsList = () => {
             key={index}
             className="relative flex items-center px-2 py-5 space-x-3 bg-white rounded-lg shadow lg:px-6 ring-1 ring-black ring-opacity-5"
           >
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 p-5">
               <div className="flex items-center space-x-3">
                 <div className="flex flex-col w-full gap-y-3">
                   <div className="flex-1">
@@ -101,3 +104,4 @@ const DoctorsList = () => {
 };
 
 export default DoctorsList;
+
