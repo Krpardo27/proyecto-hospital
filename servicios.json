@@ -3,60 +3,70 @@
     "id": 1,
     "servicio": "Cardiología",
     "disponible": true,
-    "descripcion": "Evaluación clínica especializada para diagnóstico y manejo de enfermedades cardíacas comunes."
+    "descripcion": "Evaluación clínica especializada para diagnóstico y manejo de enfermedades cardíacas comunes.",
+    "imagen": "/icons/cardiologia"
   },
   {
     "id": 2,
     "servicio": "Urgencias",
     "disponible": true,
-    "descripcion": "Atención urgente para pacientes con afecciones graves como infartos, arritmias y otros problemas cardíacos."
+    "descripcion": "Atención urgente para pacientes con afecciones graves como infartos, arritmias y otros problemas cardíacos.",
+    "imagen": "/icons/urgencias"
   },
   {
     "id": 3,
     "servicio": "Radiología",
     "disponible": false,
-    "descripcion": "Realización de pruebas de imagen como rayos X, tomografías computarizadas (TC) y resonancias magnéticas (RM)."
+    "descripcion": "Realización de pruebas de imagen como rayos X, tomografías computarizadas (TC) y resonancias magnéticas (RM).",
+    "imagen": "/icons/radiologia"
   },
   {
     "id": 4,
     "servicio": "Cirugía General",
     "disponible": true,
-    "descripcion": "Intervenciones quirúrgicas para tratar diversas afecciones médicas, como apendicitis, hernias y otros procedimientos abdominales."
+    "descripcion": "Intervenciones quirúrgicas para tratar diversas afecciones médicas, como apendicitis, hernias y otros procedimientos abdominales.",
+    "imagen": "/icons/cirugia"
   },
   {
     "id": 5,
     "servicio": "Oncología",
     "disponible": true,
-    "descripcion": "Diagnóstico, tratamiento y seguimiento de pacientes con cáncer, incluyendo quimioterapia y radioterapia."
+    "descripcion": "Diagnóstico, tratamiento y seguimiento de pacientes con cáncer, incluyendo quimioterapia y radioterapia.",
+    "imagen": "/icons/oncologia"
   },
   {
     "id": 6,
     "servicio": "Pediatría",
     "disponible": true,
-    "descripcion": "Atención médica integral para niños y adolescentes, incluyendo prevención, diagnóstico y tratamiento de enfermedades pediátricas."
+    "descripcion": "Atención médica integral para niños y adolescentes, incluyendo prevención, diagnóstico y tratamiento de enfermedades pediátricas.",
+    "imagen": "/icons/pediatria"
   },
   {
     "id": 7,
     "servicio": "Neurología",
     "disponible": true,
-    "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema nervioso, como epilepsia, Parkinson, y accidentes cerebrovasculares."
+    "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema nervioso, como epilepsia, Parkinson, y accidentes cerebrovasculares.",
+    "imagen": "/icons/neurologia"
   },
   {
     "id": 8,
     "servicio": "Oftalmología",
     "disponible": false,
-    "descripcion": "Evaluación y tratamiento de trastornos visuales, como cataratas, glaucoma y cirugías refractivas."
+    "descripcion": "Evaluación y tratamiento de trastornos visuales, como cataratas, glaucoma y cirugías refractivas.",
+    "imagen": "/icons/oftalmologia"
   },
   {
     "id": 9,
     "servicio": "Psiquiatría",
     "disponible": true,
-    "descripcion": "Diagnóstico y tratamiento de trastornos mentales y emocionales, incluidos trastornos de ansiedad, depresión y psicosis."
+    "descripcion": "Diagnóstico y tratamiento de trastornos mentales y emocionales, incluidos trastornos de ansiedad, depresión y psicosis.",
+    "imagen": "/icons/psiquiatria"
   },
   {
     "id": 10,
     "servicio": "Ortopedia",
     "disponible": true,
-    "descripcion": "Tratamiento y cirugía de afecciones musculo-esqueléticas, como fracturas, lesiones articulares y enfermedades degenerativas."
+    "descripcion": "Tratamiento y cirugía de afecciones musculo-esqueléticas, como fracturas, lesiones articulares y enfermedades degenerativas.",
+    "imagen": "/icons/ortopedia"
   }
 ]

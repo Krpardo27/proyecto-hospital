@@ -13,7 +13,7 @@ const RegisterDoctor = () => {
   );
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="">
       <div>
         <label>ID:</label>
         <input

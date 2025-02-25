@@ -10,7 +10,7 @@ const Home = () => {
       <div className="container">
         <div className="flex-1 p-5">
           <h2 className="text-3xl">En nuestro Hospital</h2>
-          <p>
+          <p className="text-md text-justify">
             nos preocupamos por tu salud y bienestar. Nuestro equipo de médicos
             especialistas está altamente capacitado para brindarte la mejor
             atención y cuidado. <br />
