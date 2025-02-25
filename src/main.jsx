@@ -7,14 +7,21 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/sw.js")
+    .then(() => console.log("Service Worker Registered"))
+    .catch((error) => console.log("Error registering service worker: ", error));
+}
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <DoctoresProvider>
+    <DoctoresProvider>
+      <AuthProvider>
         <RouterProvider router={router}>
           <Home />
         </RouterProvider>
-      </DoctoresProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </DoctoresProvider>
   </StrictMode>
 );

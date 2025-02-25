@@ -39,10 +39,10 @@ const AdminPanel = () => {
           <p>Bienvenido, Administrador. Aquí están los datos protegidos:</p>
           <h2 className="mb-4 text-2xl font-bold mt-5">Lista de Doctores</h2>
           <div className="flex lg:flex-row flex-col w-full gap-5 justify-between">
-            <div className="w-1/3">
+            <div className="lg:w-1/3">
               <DoctorForm />
             </div>
-            <div className="w-2/3">
+            <div className="lg:w-2/3">
               <DoctorsList />
             </div>
           </div>

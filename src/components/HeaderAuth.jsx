@@ -18,7 +18,11 @@ const HeaderAuth = () => {
         <div className="text-2xl font-bold text-indigo-600">
           <h1>Hospital</h1>
         </div>
-
+        <div className="flex my-5">
+          <Link to="/" className=" bg-indigo-600 px-5 py-2 text-white rounded-md hover:bg-indigo-700 transition duration-300">
+            Home
+          </Link>
+        </div>
         {user ? (
           <div className="flex items-center space-x-4">
             <span className="text-gray-800">{user.username}</span>
