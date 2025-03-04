@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { TbFaceId } from "react-icons/tb";
+
 import useLogin from "../hooks/useLogin";
 
 const Login = () => {
@@ -13,6 +15,30 @@ const Login = () => {
     error,
     handleLogin,
   } = useLogin();
+
+  const videoRef = useRef(null);
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    if (showVideo) {
+      // Acceder a la cámara
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+        })
+        .catch((error) => console.log("Error al acceder a la cámara:", error));
+    }
+    return () => {
+ 
+      if (videoRef.current && videoRef.current.srcObject) {
+        let tracks = videoRef.current.srcObject.getTracks();
+        tracks.forEach((track) => track.stop());
+      }
+    };
+  }, [showVideo]);
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -53,6 +79,14 @@ const Login = () => {
               autoComplete="current-password"
             />
           </div>
+
+          <div className="mb-6 flex flex-col gap-5">
+            <button className="w-[100px]" type="button" onClick={() => setShowVideo(!showVideo)}>
+              <h3 className="flex items-center justify-between">Face ID <TbFaceId className=" text-blue-800 text-[40px]"/></h3>
+            </button>
+            {showVideo && <video ref={videoRef} autoPlay width="300px"></video>}
+          </div>
+
           {error && (
             <div className="mb-4 text-red-600">
               Credenciales incorrectas. Por favor, inténtalo de nuevo.
