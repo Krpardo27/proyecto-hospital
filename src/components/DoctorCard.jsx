@@ -4,7 +4,6 @@ import { DoctoresContext } from "../context/DoctoresContext";
 
 const DoctorCard = () => {
   const {
-    doctores,
     especialidades,
     handleSpecialtyChange,
     filteredDoctors,
@@ -12,7 +11,7 @@ const DoctorCard = () => {
     isLoading,
   } = useContext(DoctoresContext);
 
-  console.log(doctores);
+  console.log(especialidades);
 
   return (
     <React.Fragment>
