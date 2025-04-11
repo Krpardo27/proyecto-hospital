@@ -1,22 +1,51 @@
 {
   "doctores": [
     {
-      "nombre": "Dra. María López editado",
-      "especialidad": "Dermatología editado",
-      "email": "maria.lopez2@gmail.com",
-      "id": "2"
+      "id": "1",
+      "nombre": "Dr. Ana Pérez",
+      "especialidad": "Cardiología",
+      "experiencia": 12,
+      "disponibilidad": "Lunes a Viernes, 9:00 AM - 3:00 PM",
+      "email": "ana.perez@example.com"
+    },
+    {
+      "id": "2",
+      "nombre": "Dr. Luis González",
+      "especialidad": "Cardiología intervencionista",
+      "experiencia": 8,
+      "disponibilidad": "Martes y Jueves, 10:00 AM - 2:00 PM",
+      "email": "luis.gonzales@example.com"
     },
     {
       "id": "3",
-      "nombre": "Dr. Carlos García",
-      "especialidad": "Neurología",
-      "email": "carlos.garcia@gmail.com"
+      "nombre": "Dra. María Rodríguez",
+      "especialidad": "Cirugía cardiovascular",
+      "experiencia": 15,
+      "disponibilidad": "Lunes, Miércoles y Viernes, 8:00 AM - 1:00 PM",
+      "email": "maria.rodriguez@example.com"
+    }
+  ],
+  "servicios": [
+    {
+      "id": 1,
+      "servicio": "Cardiología",
+      "disponible": true,
+      "descripcion": "Evaluación clínica especializada para diagnóstico y manejo de enfermedades cardíacas comunes.",
+      "imagen": "/icons/cardiologia"
     },
     {
-      "nombre": "doctor 3",
-      "especialidad": "asdas 3",
-      "email": "kevin.pardov236@gmail.com",
-      "id": "dcf6"
+      "id": 2,
+      "servicio": "Urgencias",
+      "disponible": true,
+      "descripcion": "Atención urgente para pacientes con afecciones graves como infartos, arritmias y otros problemas cardíacos.",
+      "imagen": "/icons/urgencias"
+    },
+    {
+      "id": 3,
+      "servicio": "Radiología",
+      "disponible": false,
+      "descripcion": "Realización de pruebas de imagen como rayos X, tomografías computarizadas (TC) y resonancias magnéticas (RM).",
+      "imagen": "/icons/radiologia"
     }
   ]
 }
