@@ -5,7 +5,8 @@ const Servicios = () => {
   const [servicios, setServicios] = useState([]);
 
   useEffect(() => {
-    fetch("./servicios.json")
+    const API_URL = import.meta.env.VITE_API_URL; // e.g. https://mi-backend.onrender.com
+    fetch(`${API_URL}/servicios`)
       .then((response) => response.json())
       .then((data) => setServicios(data))
       .catch((error) => console.error("Error fetching servicios:", error));
