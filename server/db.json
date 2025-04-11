@@ -13,16 +13,10 @@
       "email": "carlos.garcia@gmail.com"
     },
     {
-      "id": "4",
-      "nombre": "Dra. Ana Martínez",
-      "especialidad": "Pediatría",
-      "email": "ana.martinez@gmail.com"
-    },
-    {
-      "nombre": "PRUEBA SANITIZADO",
-      "especialidad": "PRUEBA",
-      "email": "prueba@gmail.com",
-      "id": "176c"
+      "nombre": "doctor 3",
+      "especialidad": "asdas 3",
+      "email": "kevin.pardov236@gmail.com",
+      "id": "dcf6"
     }
   ]
 }
