@@ -2,8 +2,11 @@ import React, { Profiler } from "react";
 import PropTypes from "prop-types";
 import withDataFetching from "../hocs/withDataFetching";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 // Componente que muestra la lista de doctores
 const ServiceList = ({ data, loading, error }) => {
+
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -40,6 +43,7 @@ ServiceList.defaultProps = {
 };
 
 // Usamos el HOC con una URL de ejemplo
-const ServiceListWithData = withDataFetching(ServiceList, "./servicios.json");
+const ServiceListWithData = withDataFetching(ServiceList, `${API_BASE_URL}/servicios`);
+
 
 export default ServiceListWithData;
