@@ -13,8 +13,10 @@ export const ServiciosProvider = ({ children }) => {
   useEffect(() => {
     const obtenerServicios = async () => {
       try {
-        const url = `${API_URL}/servicios`;
+        // Usa la URL de la variable de entorno
+        const url = `${API_URL}/servicios`; // Asegúrate de que el endpoint sea correcto
         const respuesta = await fetch(url);
+
         console.log("Servicios:", servicios);
 
         if (!respuesta.ok) {
@@ -29,7 +31,7 @@ export const ServiciosProvider = ({ children }) => {
     };
 
     obtenerServicios();
-  }, []);
+  }, [API_URL]);
 
   return (
     <ServiciosContext.Provider
