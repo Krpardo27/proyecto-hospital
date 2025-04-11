@@ -19,7 +19,7 @@ export const DoctoresProvider = ({ children }) => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${API_URL}/api/doctores`)
+      .get(`${API_URL}/doctores`)
       .then((response) => {
         const doctoresData = Array.isArray(response.data) ? response.data : [];
         setDoctores(doctoresData);
@@ -75,7 +75,7 @@ export const DoctoresProvider = ({ children }) => {
   // };
 
   const getDoctores = () => {
-    fetch(`${API_URL}/api/doctores`, {
+    fetch(`${API_URL}/doctores`, {
       // Usa la URL de la API de producción
       method: "GET",
       headers: {
@@ -194,7 +194,7 @@ export const DoctoresProvider = ({ children }) => {
     }
 
     // Hacer la solicitud POST a la API de producción
-    fetch(`${API_URL}/api/doctores`, {
+    fetch(`${API_URL}/doctores`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -221,7 +221,7 @@ export const DoctoresProvider = ({ children }) => {
 
   // Eliminar un doctor
   const deleteDoctor = (id) => {
-    fetch(`${API_URL}/api/doctores/${id}`, {
+    fetch(`${API_URL}/doctores/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -239,7 +239,7 @@ export const DoctoresProvider = ({ children }) => {
   // Editar información de un doctor
   const editDoctor = (doctor) => {
     // Verificar si el doctor existe antes de intentar actualizarlo
-    fetch(`${API_URL}/api/doctores/${doctor.id}`, {
+    fetch(`${API_URL}/doctores/${doctor.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -253,7 +253,7 @@ export const DoctoresProvider = ({ children }) => {
       })
       .then(() => {
         // Si el doctor existe, proceder con la actualización
-        return axios.put(`${API_URL}/api/doctores/${doctor.id}`, doctor);
+        return axios.put(`${API_URL}/doctores/${doctor.id}`, doctor);
       })
       .then((response) => {
         setObtenerDoctoresDB((prevDoctores) => {
