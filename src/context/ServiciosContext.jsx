@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 export const ServiciosContext = createContext();
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 // Componente para proveer el contexto
 export const ServiciosProvider = ({ children }) => {
   const [servicios, setServicios] = useState([]);
@@ -11,7 +13,7 @@ export const ServiciosProvider = ({ children }) => {
   useEffect(() => {
     const obtenerServicios = async () => {
       try {
-        const url = "./servicios.json";
+        const url = `${API_URL}/servicios`;
         const respuesta = await fetch(url);
         console.log("Servicios:", servicios);
 
