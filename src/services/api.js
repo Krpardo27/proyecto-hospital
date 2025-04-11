@@ -19,3 +19,14 @@ export const getSecureData = async (token) => {
     throw error;
   }
 };
+
+
+export const getServicios = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/servicios`);
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener servicios:", error);
+    throw error;
+  }
+};

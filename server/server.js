@@ -12,7 +12,13 @@ app.use((req, res, next) => {
 
 // Configurar middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin: "https://proyecto-hospital.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
+    allowedHeaders: ["Content-Type"], // Encabezados permitidos
+  }
+));
 
 // Configurar limitador de solicitudes
 const limiter = rateLimit({
