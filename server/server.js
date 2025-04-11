@@ -26,6 +26,7 @@ app.use(limiter);
 
 // "Base de datos" en memoria
 let doctores = [];
+let servicios = [];
 
 // Ruta GET para obtener todos los doctores
 app.get("/api/doctores", (req, res) => {
@@ -59,6 +60,10 @@ app.delete("/api/doctores/:id", (req, res) => {
   const { id } = req.params;
   doctores = doctores.filter(doc => doc.id !== parseInt(id));
   res.status(204).send();
+});
+
+app.get("/api/servicios", (req, res) => {
+  res.json(servicios);
 });
 
 // Iniciar el servidor
