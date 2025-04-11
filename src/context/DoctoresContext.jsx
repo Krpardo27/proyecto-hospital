@@ -14,10 +14,12 @@ export const DoctoresProvider = ({ children }) => {
 
   const [doctorToEdit, setDoctorToEdit] = useState(null);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("/doctores.json")
+      .get(`${API_URL}/api/doctores`)
       .then((response) => {
         const doctoresData = Array.isArray(response.data) ? response.data : [];
         setDoctores(doctoresData);
@@ -49,8 +51,32 @@ export const DoctoresProvider = ({ children }) => {
     }, 1000);
   };
 
+  // const getDoctores = () => {
+  //   fetch("http://localhost:5000/doctores", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         return response.text().then((text) => {
+  //           throw new Error(`Error ${response.status}: ${text}`);
+  //         });
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       const doctoresData = Array.isArray(data) ? data : [];
+  //       setObtenerDoctoresDB(doctoresData);
+  //       localStorage.setItem("doctores", JSON.stringify(doctoresData));
+  //     })
+  //     .catch((error) => console.error("Error:", error.message));
+  // };
+
   const getDoctores = () => {
-    fetch("http://localhost:5000/doctores", {
+    fetch(`${API_URL}/api/doctores`, {
+      // Usa la URL de la API de producción
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -72,6 +98,91 @@ export const DoctoresProvider = ({ children }) => {
       .catch((error) => console.error("Error:", error.message));
   };
 
+  // const addDoctor = (newDoctor) => {
+  //   // Verificar si el ID del doctor ya existe
+  //   const doctorExists = doctores.find(
+  //     (doctor) => doctor.id === newDoctor.id || doctor.email === newDoctor.email
+  //   );
+  //   if (doctorExists) {
+  //     console.warn(`Doctor with ID ${newDoctor.id} already exists.`);
+  //     return;
+  //   }
+
+  //   // Hacer la solicitud POST a json-server
+  //   fetch("http://localhost:5000/doctores", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newDoctor),
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         return response.text().then((text) => {
+  //           throw new Error(`Error ${response.status}: ${text}`);
+  //         });
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setObtenerDoctoresDB((prevDoctores) => {
+  //         const updatedDoctores = [data, ...prevDoctores];
+  //         localStorage.setItem("doctores", JSON.stringify(updatedDoctores));
+  //         return updatedDoctores;
+  //       });
+  //     })
+  //     .catch((error) => console.error("Error:", error.message));
+  // };
+
+  // eliminar un doctor
+  // const deleteDoctor = (id) => {
+  //   fetch(`http://localhost:5000/doctores/${id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then(() => {
+  //       setObtenerDoctoresDB((prevDoctores) => {
+  //         const updatedDoctores = prevDoctores.filter(
+  //           (doctor) => doctor.id !== id
+  //         );
+  //         localStorage.setItem("doctores", JSON.stringify(updatedDoctores));
+  //         return updatedDoctores;
+  //       });
+  //     })
+  //     .catch((error) => console.error("Error:", error));
+  // };
+
+  // editar información de un doctor
+  // const editDoctor = (doctor) => {
+  //   // Verificar si el doctor existe antes de intentar actualizarlo
+  //   fetch(`http://localhost:5000/doctores/${doctor.id}`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`Doctor with ID ${doctor.id} not found.`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(() => {
+  //       // Si el doctor existe, proceder con la actualización
+  //       return axios.put(`http://localhost:5000/doctores/${doctor.id}`, doctor);
+  //     })
+  //     .then((response) => {
+  //       setObtenerDoctoresDB((prevDoctores) => {
+  //         const updatedDoctores = prevDoctores.map((doc) =>
+  //           doc.id === response.data.id ? response.data : doc
+  //         );
+  //         localStorage.setItem("doctores", JSON.stringify(updatedDoctores));
+  //         return updatedDoctores;
+  //       });
+  //       setDoctorToEdit(null); // Limpiar el estado de doctorToEdit después de la edición
+  //     })
+  //     .catch((error) => console.error("Error:", error.message));
+  // };
+  // Agregar un nuevo doctor
   const addDoctor = (newDoctor) => {
     // Verificar si el ID del doctor ya existe
     const doctorExists = doctores.find(
@@ -82,8 +193,8 @@ export const DoctoresProvider = ({ children }) => {
       return;
     }
 
-    // Hacer la solicitud POST a json-server
-    fetch("http://localhost:5000/doctores", {
+    // Hacer la solicitud POST a la API de producción
+    fetch(`${API_URL}/api/doctores`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -108,9 +219,9 @@ export const DoctoresProvider = ({ children }) => {
       .catch((error) => console.error("Error:", error.message));
   };
 
-  // eliminar un doctor
+  // Eliminar un doctor
   const deleteDoctor = (id) => {
-    fetch(`http://localhost:5000/doctores/${id}`, {
+    fetch(`${API_URL}/api/doctores/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -125,10 +236,10 @@ export const DoctoresProvider = ({ children }) => {
       .catch((error) => console.error("Error:", error));
   };
 
-  // editar información de un doctor
+  // Editar información de un doctor
   const editDoctor = (doctor) => {
     // Verificar si el doctor existe antes de intentar actualizarlo
-    fetch(`http://localhost:5000/doctores/${doctor.id}`, {
+    fetch(`${API_URL}/api/doctores/${doctor.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -142,7 +253,7 @@ export const DoctoresProvider = ({ children }) => {
       })
       .then(() => {
         // Si el doctor existe, proceder con la actualización
-        return axios.put(`http://localhost:5000/doctores/${doctor.id}`, doctor);
+        return axios.put(`${API_URL}/api/doctores/${doctor.id}`, doctor);
       })
       .then((response) => {
         setObtenerDoctoresDB((prevDoctores) => {

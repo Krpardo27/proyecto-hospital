@@ -1,7 +1,7 @@
 {
   "doctores": [
     {
-      "id": "1",
+      "id": 1,
       "nombre": "Dr. Ana Pérez",
       "especialidad": "Cardiología",
       "experiencia": 12,
@@ -9,7 +9,7 @@
       "email": "ana.perez@example.com"
     },
     {
-      "id": "2",
+      "id": 2,
       "nombre": "Dr. Luis González",
       "especialidad": "Cardiología intervencionista",
       "experiencia": 8,
@@ -17,12 +17,100 @@
       "email": "luis.gonzales@example.com"
     },
     {
-      "id": "3",
+      "id": 3,
       "nombre": "Dra. María Rodríguez",
       "especialidad": "Cirugía cardiovascular",
       "experiencia": 15,
       "disponibilidad": "Lunes, Miércoles y Viernes, 8:00 AM - 1:00 PM",
       "email": "maria.rodriguez@example.com"
+    },
+    {
+      "id": 4,
+      "nombre": "Dr. Jorge Martínez",
+      "especialidad": "Electrofisiología cardiaca",
+      "experiencia": 20,
+      "disponibilidad": "Lunes a Viernes, 10:00 AM - 4:00 PM",
+      "email": "jorge.martinez@example.com"
+    },
+    {
+      "id": 5,
+      "nombre": "Dra. Carmen López",
+      "especialidad": "Ecocardiografía",
+      "experiencia": 10,
+      "disponibilidad": "Miércoles y Viernes, 9:00 AM - 12:00 PM",
+      "email": "carmen.lopez@example.com"
+    },
+    {
+      "id": 6,
+      "nombre": "Dr. Rafael González",
+      "especialidad": "Radiología Diagnóstica",
+      "experiencia": 18,
+      "disponibilidad": "Lunes a Jueves, 9:00 AM - 5:00 PM",
+      "email": "rafael.gonzalez@example.com"
+    },
+    {
+      "id": 7,
+      "nombre": "Dra. Elena Fernández",
+      "especialidad": "Oncología",
+      "experiencia": 22,
+      "disponibilidad": "Martes y Viernes, 8:30 AM - 2:00 PM",
+      "email": "elena.fernandez@example.com"
+    },
+    {
+      "id": 8,
+      "nombre": "Dr. Manuel García",
+      "especialidad": "Pediatría",
+      "experiencia": 14,
+      "disponibilidad": "Lunes, Miércoles y Viernes, 8:00 AM - 1:00 PM",
+      "email": "manuel.garcia@example.com"
+    },
+    {
+      "id": 9,
+      "nombre": "Dra. Laura Torres",
+      "especialidad": "Neurología",
+      "experiencia": 16,
+      "disponibilidad": "Lunes a Jueves, 10:00 AM - 4:00 PM",
+      "email": "laura.torres@example.com"
+    },
+    {
+      "id": 10,
+      "nombre": "Dr. Víctor Sánchez",
+      "especialidad": "Oftalmología",
+      "experiencia": 12,
+      "disponibilidad": "Martes y Jueves, 9:00 AM - 1:00 PM",
+      "email": "victor.sanchez@example.com"
+    },
+    {
+      "id": 11,
+      "nombre": "Dr. Alberto Jiménez",
+      "especialidad": "Psiquiatría",
+      "experiencia": 25,
+      "disponibilidad": "Lunes a Viernes, 8:00 AM - 3:00 PM",
+      "email": "alberto.jimenez@example.com"
+    },
+    {
+      "id": 12,
+      "nombre": "Dr. Hugo Martínez",
+      "especialidad": "Traumatología y Ortopedia",
+      "experiencia": 20,
+      "disponibilidad": "Lunes, Miércoles y Viernes, 9:00 AM - 2:00 PM",
+      "email": "hugo.martinez@example.com"
+    },
+    {
+      "id": 13,
+      "nombre": "Dr. Ana Rosa Pérez",
+      "especialidad": "Traumatología y Ortopedia",
+      "experiencia": 20,
+      "disponibilidad": "Lunes, Miércoles y Viernes, 9:00 AM - 2:00 PM",
+      "email": "hugo.martinez@example.com"
+    },
+    {
+      "id": 14,
+      "nombre": "Dr. Mario Martínez",
+      "especialidad": "Traumatología y Ortopedia",
+      "experiencia": 20,
+      "disponibilidad": "Lunes, Miércoles y Viernes, 9:00 AM - 2:00 PM",
+      "email": "hugo.martinez@example.com"
     }
   ],
   "servicios": [
@@ -46,6 +134,55 @@
       "disponible": false,
       "descripcion": "Realización de pruebas de imagen como rayos X, tomografías computarizadas (TC) y resonancias magnéticas (RM).",
       "imagen": "/icons/radiologia"
+    },
+    {
+      "id": 4,
+      "servicio": "Cirugía General",
+      "disponible": true,
+      "descripcion": "Intervenciones quirúrgicas para tratar diversas afecciones médicas, como apendicitis, hernias y otros procedimientos abdominales.",
+      "imagen": "/icons/cirugia"
+    },
+    {
+      "id": 5,
+      "servicio": "Oncología",
+      "disponible": true,
+      "descripcion": "Diagnóstico, tratamiento y seguimiento de pacientes con cáncer, incluyendo quimioterapia y radioterapia.",
+      "imagen": "/icons/oncologia"
+    },
+    {
+      "id": 6,
+      "servicio": "Pediatría",
+      "disponible": true,
+      "descripcion": "Atención médica integral para niños y adolescentes, incluyendo prevención, diagnóstico y tratamiento de enfermedades pediátricas.",
+      "imagen": "/icons/pediatria"
+    },
+    {
+      "id": 7,
+      "servicio": "Neurología",
+      "disponible": true,
+      "descripcion": "Diagnóstico y tratamiento de enfermedades del sistema nervioso, como epilepsia, Parkinson, y accidentes cerebrovasculares.",
+      "imagen": "/icons/neurologia"
+    },
+    {
+      "id": 8,
+      "servicio": "Oftalmología",
+      "disponible": false,
+      "descripcion": "Evaluación y tratamiento de trastornos visuales, como cataratas, glaucoma y cirugías refractivas.",
+      "imagen": "/icons/oftalmologia"
+    },
+    {
+      "id": 9,
+      "servicio": "Psiquiatría",
+      "disponible": true,
+      "descripcion": "Diagnóstico y tratamiento de trastornos mentales y emocionales, incluidos trastornos de ansiedad, depresión y psicosis.",
+      "imagen": "/icons/psiquiatria"
+    },
+    {
+      "id": 10,
+      "servicio": "Ortopedia",
+      "disponible": true,
+      "descripcion": "Tratamiento y cirugía de afecciones musculo-esqueléticas, como fracturas, lesiones articulares y enfermedades degenerativas.",
+      "imagen": "/icons/ortopedia"
     }
   ]
 }
